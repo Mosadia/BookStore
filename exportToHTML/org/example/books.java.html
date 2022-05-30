@@ -1,0 +1,245 @@
+<html>
+<head>
+<title>books.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+books.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org.example</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.Scanner</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">books {</span>
+
+    <span class="s1">book theBooks[] = </span><span class="s0">new </span><span class="s1">book[</span><span class="s2">500</span><span class="s1">]</span><span class="s0">;</span>
+    <span class="s0">public static int </span><span class="s1">count</span><span class="s0">;</span>
+
+    <span class="s1">Scanner input = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s0">;</span>
+
+
+
+
+    <span class="s0">public int </span><span class="s1">compareBookObjects(book b1</span><span class="s0">, </span><span class="s1">book b2){</span>
+
+        <span class="s0">if </span><span class="s1">(b1.bookName.equalsIgnoreCase(b2.bookName)){</span>
+
+            <span class="s1">System.out.println(</span><span class="s3">&quot;Book of this Name Already Exists.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">return </span><span class="s2">0</span><span class="s0">;</span>
+
+        <span class="s1">}</span>
+        <span class="s0">if </span><span class="s1">(b1.sNo==b2.sNo){</span>
+
+            <span class="s1">System.out.println(</span><span class="s3">&quot;Book of this Serial No Already Exists.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">return </span><span class="s2">0</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s2">1</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">addBook(book b){</span>
+
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s2">0</span><span class="s0">; </span><span class="s1">i&lt;count</span><span class="s0">; </span><span class="s1">i++){</span>
+
+            <span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.compareBookObjects(b</span><span class="s0">, this</span><span class="s1">.theBooks[i]) == </span><span class="s2">0</span><span class="s1">)</span>
+                <span class="s0">return;</span>
+
+        <span class="s1">}</span>
+
+        <span class="s0">if </span><span class="s1">(count&lt;</span><span class="s2">50</span><span class="s1">){</span>
+
+            <span class="s1">theBooks[count] = b</span><span class="s0">;</span>
+            <span class="s1">count++</span><span class="s0">;</span>
+
+        <span class="s1">}</span>
+        <span class="s0">else</span><span class="s1">{</span>
+
+            <span class="s1">System.out.println(</span><span class="s3">&quot;No Space to Add More Books.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">searchBySno(){</span>
+
+        <span class="s1">System.out.println(</span><span class="s3">&quot;</span><span class="s0">\t\t\t\t</span><span class="s3">SEARCH BY SERIAL NUMBER</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s0">int </span><span class="s1">sNo</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Enter Serial No of Book:&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">sNo = input.nextInt()</span><span class="s0">;</span>
+
+        <span class="s0">int </span><span class="s1">flag = </span><span class="s2">0</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;S.No</span><span class="s0">\t\t</span><span class="s3">Name</span><span class="s0">\t\t</span><span class="s3">Author</span><span class="s0">\t\t</span><span class="s3">Available Qty</span><span class="s0">\t\t</span><span class="s3">Total Qty&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s2">0</span><span class="s0">; </span><span class="s1">i&lt;count</span><span class="s0">; </span><span class="s1">i++){</span>
+
+            <span class="s0">if </span><span class="s1">(sNo == theBooks[i].sNo){</span>
+
+                <span class="s1">System.out.println(theBooks[i].sNo + </span><span class="s3">&quot;</span><span class="s0">\t\t</span><span class="s3">&quot; </span><span class="s1">+ theBooks[i].bookName + </span><span class="s3">&quot;</span><span class="s0">\t\t</span><span class="s3">&quot; </span><span class="s1">+ theBooks[i].authorName + </span><span class="s3">&quot;</span><span class="s0">\t\t</span><span class="s3">&quot; </span><span class="s1">+</span>
+                        <span class="s1">theBooks[i].bookQtyCopy + </span><span class="s3">&quot;</span><span class="s0">\t\t</span><span class="s3">&quot; </span><span class="s1">+ theBooks[i].bookQty)</span><span class="s0">;</span>
+                <span class="s1">flag++</span><span class="s0">;</span>
+                <span class="s0">return;</span>
+
+            <span class="s1">}</span>
+
+        <span class="s1">}</span>
+        <span class="s0">if </span><span class="s1">(flag == </span><span class="s2">0</span><span class="s1">)</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;No Book for Serial No &quot; </span><span class="s1">+ sNo + </span><span class="s3">&quot; Found.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">searchByAuthorName(){</span>
+
+        <span class="s1">System.out.println(</span><span class="s3">&quot;</span><span class="s0">\t\t\t\t</span><span class="s3">SEARCH BY AUTHOR'S NAME&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">input.nextLine()</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Enter Author Name:&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">String authorName = input.nextLine()</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">flag = </span><span class="s2">0</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;S.No</span><span class="s0">\t\t</span><span class="s3">Name</span><span class="s0">\t\t</span><span class="s3">Author</span><span class="s0">\t\t</span><span class="s3">Available Qty</span><span class="s0">\t\t</span><span class="s3">Total Qty&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s2">0</span><span class="s0">; </span><span class="s1">i&lt;count</span><span class="s0">; </span><span class="s1">i++){</span>
+
+            <span class="s0">if </span><span class="s1">(authorName.equalsIgnoreCase(theBooks[i].authorName)){</span>
+
+                <span class="s1">System.out.println(theBooks[i].sNo + </span><span class="s3">&quot;</span><span class="s0">\t\t</span><span class="s3">&quot; </span><span class="s1">+ theBooks[i].bookName + </span><span class="s3">&quot;</span><span class="s0">\t\t</span><span class="s3">&quot; </span><span class="s1">+ theBooks[i].authorName + </span><span class="s3">&quot;</span><span class="s0">\t\t</span><span class="s3">&quot; </span><span class="s1">+</span>
+                        <span class="s1">theBooks[i].bookQtyCopy + </span><span class="s3">&quot;</span><span class="s0">\t\t</span><span class="s3">&quot; </span><span class="s1">+ theBooks[i].bookQty)</span><span class="s0">;</span>
+                <span class="s1">flag++</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+        <span class="s1">}</span>
+        <span class="s0">if </span><span class="s1">(flag == </span><span class="s2">0</span><span class="s1">)</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;No Books of &quot; </span><span class="s1">+ authorName + </span><span class="s3">&quot; Found.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+
+    <span class="s0">public void </span><span class="s1">showAllBooks(){</span>
+
+        <span class="s1">System.out.println(</span><span class="s3">&quot;</span><span class="s0">\t\t\t\t</span><span class="s3">SHOWING ALL BOOKS</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;S.No</span><span class="s0">\t\t</span><span class="s3">Name</span><span class="s0">\t\t</span><span class="s3">Author</span><span class="s0">\t\t</span><span class="s3">Available Qty</span><span class="s0">\t\t</span><span class="s3">Total Qty&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s2">0</span><span class="s0">; </span><span class="s1">i&lt;count</span><span class="s0">; </span><span class="s1">i++){</span>
+
+            <span class="s1">System.out.println(theBooks[i].sNo + </span><span class="s3">&quot;</span><span class="s0">\t\t</span><span class="s3">&quot; </span><span class="s1">+ theBooks[i].bookName + </span><span class="s3">&quot;</span><span class="s0">\t\t</span><span class="s3">&quot; </span><span class="s1">+ theBooks[i].authorName + </span><span class="s3">&quot;</span><span class="s0">\t\t</span><span class="s3">&quot; </span><span class="s1">+</span>
+                    <span class="s1">theBooks[i].bookQtyCopy + </span><span class="s3">&quot;</span><span class="s0">\t\t</span><span class="s3">&quot; </span><span class="s1">+ theBooks[i].bookQty)</span><span class="s0">;</span>
+
+
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">upgradeBookQty(){</span>
+
+        <span class="s1">System.out.println(</span><span class="s3">&quot;</span><span class="s0">\t\t\t\t</span><span class="s3">UPGRADE QUANTITY OF A BOOK</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Enter Serial No of Book&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">sNo = input.nextInt()</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s2">0</span><span class="s0">; </span><span class="s1">i&lt;count</span><span class="s0">; </span><span class="s1">i++){</span>
+
+            <span class="s0">if </span><span class="s1">(sNo == theBooks[i].sNo){</span>
+
+                <span class="s1">System.out.println(</span><span class="s3">&quot;Enter No of Books to be Added:&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s0">int </span><span class="s1">addingQty = input.nextInt()</span><span class="s0">;</span>
+                <span class="s1">theBooks[i].bookQty += addingQty</span><span class="s0">;</span>
+                <span class="s1">theBooks[i].bookQtyCopy += addingQty</span><span class="s0">;</span>
+                <span class="s0">return;</span>
+
+            <span class="s1">}</span>
+
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+
+    <span class="s0">public void </span><span class="s1">dispMenu(){</span>
+
+        <span class="s1">System.out.println(</span><span class="s3">&quot;###########################################################################################################&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Press 0 to Exit Application.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Press 1 to Add new Book.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Press 2 to Upgrade Quantity of a Book.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Press 3 to Search a Book.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Press 4 to Show All Books.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Press 5 to Register User.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Press 6 to Show All Registered User.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Press 7 to Borrow To Give Book. &quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Press 8 to ReturnBooks To Take In Book&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;###########################################################################################################&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">public int </span><span class="s1">isAvailable(</span><span class="s0">int </span><span class="s1">sNo){</span>
+
+
+
+
+
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s2">0</span><span class="s0">; </span><span class="s1">i&lt;count</span><span class="s0">; </span><span class="s1">i++){</span>
+
+            <span class="s0">if </span><span class="s1">(sNo == theBooks[i].sNo){</span>
+                <span class="s0">if</span><span class="s1">(theBooks[i].bookQtyCopy &gt; </span><span class="s2">0</span><span class="s1">){</span>
+
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Book is Available.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s0">return </span><span class="s1">i</span><span class="s0">;</span>
+
+                <span class="s1">}</span>
+                <span class="s1">System.out.println(</span><span class="s3">&quot;Book is Unavailable&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s0">return </span><span class="s1">-</span><span class="s2">1</span><span class="s0">;</span>
+
+            <span class="s1">}</span>
+
+        <span class="s1">}</span>
+
+        <span class="s1">System.out.println(</span><span class="s3">&quot;No Book of Serial Number &quot; </span><span class="s1">+ </span><span class="s3">&quot; Available in Library.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">return </span><span class="s1">-</span><span class="s2">1</span><span class="s0">;</span>
+
+
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">book checkOutBook(){</span>
+
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Enter Serial No of Book to be Borrowed Out.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">sNo = input.nextInt()</span><span class="s0">;</span>
+
+        <span class="s0">int </span><span class="s1">bookIndex =isAvailable(sNo)</span><span class="s0">;</span>
+
+        <span class="s0">if </span><span class="s1">(bookIndex!=-</span><span class="s2">1</span><span class="s1">){</span>
+
+
+            <span class="s1">theBooks[bookIndex].bookQtyCopy--</span><span class="s0">;</span>
+
+            <span class="s0">return </span><span class="s1">theBooks[bookIndex]</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+        <span class="s0">return null;</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">checkInBook(book b){</span>
+
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s2">0</span><span class="s0">; </span><span class="s1">i&lt;count</span><span class="s0">; </span><span class="s1">i++){</span>
+
+            <span class="s0">if </span><span class="s1">(b.equals(theBooks[i]) ){</span>
+
+                <span class="s1">theBooks[i].bookQtyCopy++</span><span class="s0">;</span>
+                <span class="s0">return;</span>
+
+            <span class="s1">}</span>
+
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+
+
+
+
+
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
