@@ -90,6 +90,29 @@ public class Library {
 
 
     }
+    
+    book readBookInfo(Scanner input){
+        int sNo;
+        String bookName;
+        String authorName;
+        int bookQty;
+        
+        System.out.println("Enter Serial No of Book:");
+        if(input.hasNextInt()){
+            sNo = input.nextInt();
+            input.nextLine();
+        }else{
+            throw new InputMismatchException("Expected i1nt but got something else");
+        }
+        System.out.println("Enter Book Name:");
+        bookName = input.nextLine();
+        System.out.println("Enter Author Name:");
+        authorName = input.nextLine();
+        System.out.println("Enter Quantity of Books:");
+        bookQty = input.nextInt();
+
+        return new book(sNo, bookName,authorName,bookQty);
+    }
 
 
 }
