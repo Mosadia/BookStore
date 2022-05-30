@@ -33,7 +33,7 @@ public class users {
         }
 
     }
-    public void showAllStudents(){
+    public void showAllUsers(){
 
         System.out.println("User Name\t\tReg Number");
         for (int i=0; i<count; i++){
