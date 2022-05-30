@@ -34,5 +34,11 @@ public class book {
         bookQtyCopy = this.bookQty;
 
     }
+    public book(int sNo, String bookName, String authorName,int bookQty){
+        this.sNo=sNo;
+        this.bookName=bookName;
+        this.authorName=authorName;
+        this.bookQty=bookQty;
+    }
 
 }
